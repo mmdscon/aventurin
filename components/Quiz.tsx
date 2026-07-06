@@ -179,10 +179,13 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
           </p>
 
           {/* Trust-Block mit Portrait */}
-          <div className="flex flex-col items-center gap-4 mb-8 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
-            <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0"
-              style={{ border: '2px solid rgba(0,184,147,0.5)' }}>
-              <Image src="/images/portrait.jpg" alt="Praxisteam AVENTURIN" fill className="object-cover object-top" />
+          <div className="flex flex-col items-center gap-3 mb-8 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
+            <div className="relative w-24 h-24 flex-shrink-0">
+              <Image src="/images/ingrid-nemeth.webp" alt="Ingrid Németh – Psychologin & Life Coach bei AVENTURIN" fill className="object-contain" />
+            </div>
+            <div className="text-center">
+              <p className="font-bold text-sm text-gray-900">Ingrid Németh</p>
+              <p className="text-xs text-gray-500">Psychologin &amp; Life Coach</p>
             </div>
             <p className="text-sm text-gray-600 font-semibold leading-relaxed text-center">
               Nach Ihrer Anfrage melden wir uns innerhalb von 24 Stunden persönlich bei Ihnen.

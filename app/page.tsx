@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from 'react'
-import { ArrowRight, Star } from 'lucide-react'
+import { ArrowRight, Star, MapPin, Phone, Mail, Clock } from 'lucide-react'
 import Image from 'next/image'
 import Quiz from '@/components/Quiz'
 import { trackCtaClick, trackSectionView } from '@/lib/useAnalytics'
@@ -165,6 +165,88 @@ export default function HomePage() {
                   <p className="font-bold text-sm text-black">{r.name}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── STANDORT ── */}
+      <section id="standort" className="py-16 md:py-24 bg-white">
+        <div className="section-width">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-stretch">
+            {/* Links: Google Maps */}
+            <div className="rounded-3xl overflow-hidden min-h-[320px] md:min-h-[420px] border border-gray-100 shadow-sm">
+              <iframe
+                title="Standort Zahnarztpraxis AVENTURIN am Graben, 1010 Wien"
+                src="https://www.google.com/maps?q=Graben+31,+1010+Wien,+Austria&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '320px' }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+            {/* Rechts: Adresse & Text */}
+            <div className="flex flex-col justify-center">
+              <span
+                className="inline-block text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider text-white w-fit"
+                style={{ backgroundColor: '#00B893' }}
+              >
+                Zentral am Graben
+              </span>
+              <h2 className="font-display text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+                Mitten im 1. Bezirk, einfach zu erreichen
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-8">
+                Unsere Praxis liegt im Herzen der Wiener Innenstadt – direkt am Graben, umgeben von
+                U-Bahn-Anbindungen, Parkmöglichkeiten und den schönsten Ecken der Stadt. Ideal, um
+                Ihr Bleaching mit einem Spaziergang durch die Innenstadt zu verbinden.
+              </p>
+
+              <div className="flex flex-col gap-4">
+                <div className="flex items-start gap-3">
+                  <span className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
+                    <MapPin size={16} style={{ color: '#00B893' }} />
+                  </span>
+                  <p className="text-gray-700 font-semibold pt-1.5">
+                    Graben 31/11, 1010 Wien, Österreich
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
+                    <Phone size={16} style={{ color: '#00B893' }} />
+                  </span>
+                  <a href="tel:+4315330303" className="text-gray-700 font-semibold pt-1.5 hover:text-black transition-colors">
+                    +43 1 533 03 03
+                  </a>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
+                    <Mail size={16} style={{ color: '#00B893' }} />
+                  </span>
+                  <a href="mailto:hallo@aventurin.at" className="text-gray-700 font-semibold pt-1.5 hover:text-black transition-colors">
+                    hallo@aventurin.at
+                  </a>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
+                    <Clock size={16} style={{ color: '#00B893' }} />
+                  </span>
+                  <p className="text-gray-700 font-semibold pt-1.5">
+                    Mo–Fr, 10:00–18:00 Uhr
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href="https://maps.app.goo.gl/Ki33txw9CkJBDJyK6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline mt-8 w-fit"
+              >
+                Route planen <ArrowRight size={16} />
+              </a>
             </div>
           </div>
         </div>
