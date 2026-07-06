@@ -140,3 +140,11 @@ body {
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
+
+/* Sanfter, nach außen gerichteter Schatten oben & unten – lässt eine volle Sektion
+   optisch aus dem Seitenfluss "herauskommen" */
+.section-pop-shadow {
+  box-shadow: 0 -12px 28px -8px rgba(0, 0, 0, 0.08), 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+}

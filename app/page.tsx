@@ -105,7 +105,7 @@ export default function HomePage() {
       </section>
 
       {/* ── QUIZ ── */}
-      <section id="quiz" className="py-16 md:py-20" style={{ backgroundColor: '#f9f9f9' }}>
+      <section id="quiz" className="py-16 md:py-20 section-pop-shadow" style={{ backgroundColor: '#f9f9f9' }}>
         <div className="section-width">
           <div className="max-w-3xl mx-auto">
             <div className="mb-8 text-center">
