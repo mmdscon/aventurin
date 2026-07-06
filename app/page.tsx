@@ -44,7 +44,7 @@ export default function HomePage() {
         <div className="section-width">
           <div className="relative w-full rounded-3xl overflow-hidden aspect-square md:aspect-[21/9]">
             <Image
-              src="/images/bleaching-hero.webp"
+              src="/images/herobanneraventurin.png"
               alt="Zahnarztpraxis AVENTURIN – Empfangsbereich am Graben, Wien"
               fill
               className="object-cover object-center"
