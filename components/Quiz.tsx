@@ -12,15 +12,15 @@ import {
 } from '@/lib/useAnalytics'
 
 const q1Options = [
-  { label: 'Ja',          sub: 'bin bereit',     value: 'ja' },
-  { label: 'Noch',        sub: 'unsicher',       value: 'noch-unsicher' },
+  { label: 'Ja',       sub: 'ich bin bereit',            value: 'ja' },
+  { label: 'Unsicher', sub: 'ich informiere mich erstmal', value: 'unsicher' },
 ]
 
 const q2Options = [
-  { label: 'So',   sub: 'bald wie möglich', value: 'sofort' },
-  { label: '2–4',  sub: 'Wochen',  value: '2-4-wochen' },
-  { label: '1–3',  sub: 'Monate',  value: '1-3-monate' },
-  { label: 'Nur',  sub: 'informieren', value: 'nur-informieren' },
+  { label: 'So schnell wie möglich', value: 'sofort' },
+  { label: 'In den nächsten 4 Wochen', value: '4-wochen' },
+  { label: 'In den nächsten 1 bis 3 Monaten', value: '1-3-monate' },
+  { label: 'Ich weiß es noch nicht', value: 'weiss-nicht' },
 ]
 
 type Step = 'q1' | 'q2' | 'loading' | 'form'
@@ -85,7 +85,7 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
   const subTextClass = isDark ? 'text-white/70' : 'text-gray-500'
   const accentColor = '#00B893'
 
-  // Shared gradient card – used for both Q1 and Q2
+  // Shared gradient card – used for Q1
   const GradientCard = ({
     label, sub, onClick,
   }: { label: string; sub: string; onClick: () => void }) => (
@@ -96,6 +96,20 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
     >
       <span className="text-3xl md:text-4xl font-extrabold text-white leading-none">{label}</span>
       <span className="text-sm font-semibold text-white/80">{sub}</span>
+    </button>
+  )
+
+  // Längliche, gestapelte Antwort-Buttons – für Q2 (Terminwunsch)
+  const ListOption = ({
+    label, onClick,
+  }: { label: string; onClick: () => void }) => (
+    <button
+      onClick={onClick}
+      className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left font-semibold text-white cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg"
+      style={{ background: 'linear-gradient(135deg, #049174 0%, #00B893 100%)' }}
+    >
+      <span>{label}</span>
+      <ArrowRight size={18} className="flex-shrink-0" />
     </button>
   )
 
@@ -117,16 +131,16 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
         </div>
       )}
 
-      {/* ── Frage 2 – gleicher Gradient-Stil ── */}
+      {/* ── Frage 2 – längliche, gestapelte Optionen ── */}
       {step === 'q2' && (
         <div className="text-center">
           <h3 className={`font-display text-2xl md:text-3xl font-semibold mb-2 ${textClass}`}>
-            Wann möchten Sie strahlend weiße Zähne haben?
+            Wann möchten Sie einen Termin vereinbaren?
           </h3>
           <p className={`mb-8 ${subTextClass}`}>Wählen Sie die zutreffendste Option.</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {q2Options.map(({ label, sub, value }) => (
-              <GradientCard key={value} label={label} sub={sub} onClick={() => selectQ2(value)} />
+          <div className="flex flex-col gap-3 max-w-md mx-auto">
+            {q2Options.map(({ label, value }) => (
+              <ListOption key={value} label={label} onClick={() => selectQ2(value)} />
             ))}
           </div>
         </div>
