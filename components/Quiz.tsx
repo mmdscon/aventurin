@@ -12,10 +12,8 @@ import {
 } from '@/lib/useAnalytics'
 
 const q1Options = [
-  { label: 'Kaffee',   sub: '& Tee',      value: 'kaffee-tee' },
-  { label: 'Rotwein',  sub: '& Rauchen',  value: 'rotwein-rauchen' },
-  { label: 'Anlass',   sub: 'z. B. Hochzeit', value: 'anlass' },
-  { label: 'Generell', sub: 'weißer lächeln', value: 'generell-weisser' },
+  { label: 'Ja',          sub: 'bin bereit',     value: 'ja' },
+  { label: 'Noch',        sub: 'unsicher',       value: 'noch-unsicher' },
 ]
 
 const q2Options = [
@@ -93,7 +91,7 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
   }: { label: string; sub: string; onClick: () => void }) => (
     <button
       onClick={onClick}
-      className="aspect-square rounded-2xl flex flex-col items-center justify-center gap-1 cursor-pointer transition-all hover:scale-105 hover:shadow-lg"
+      className="aspect-square flex flex-col items-center justify-center gap-1 cursor-pointer transition-all hover:scale-105 hover:shadow-lg"
       style={{ background: 'linear-gradient(135deg, #049174 0%, #00B893 100%)' }}
     >
       <span className="text-3xl md:text-4xl font-extrabold text-white leading-none">{label}</span>
@@ -108,10 +106,10 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
       {step === 'q1' && (
         <div className="text-center">
           <h3 className={`font-display text-2xl md:text-3xl font-semibold mb-2 ${textClass}`}>
-            Was ist Ihnen bei Ihren Zähnen am wichtigsten?
+            Bereit für strahlende Zähne ohne Schmerzen und Nebenwirkungen?
           </h3>
-          <p className={`mb-8 ${subTextClass}`}>Wählen Sie die zutreffendste Option.</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <p className={`mb-8 ${subTextClass}`}>Wählen Sie eine Antwort.</p>
+          <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
             {q1Options.map(({ label, sub, value }) => (
               <GradientCard key={value} label={label} sub={sub} onClick={() => selectQ1(value)} />
             ))}
@@ -256,7 +254,7 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
             <button
               type="submit"
               disabled={submitting}
-              className="mt-2 flex items-center justify-center gap-2 py-4 rounded-full font-extrabold text-base transition-all hover:scale-[1.02] disabled:opacity-60"
+              className="mt-2 flex items-center justify-center gap-2 py-4 font-extrabold text-base transition-all hover:scale-[1.02] disabled:opacity-60"
               style={{ backgroundColor: '#00B893', color: '#fff' }}
             >
               {submitting ? 'Wird gesendet…' : 'Bleaching-Termin kostenlos anfragen'}

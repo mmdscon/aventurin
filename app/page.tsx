@@ -6,14 +6,10 @@ import Quiz from '@/components/Quiz'
 import { trackCtaClick, trackSectionView } from '@/lib/useAnalytics'
 
 const reviews = [
-  { text: 'Nach nur einer Sitzung waren meine Zähne sichtbar heller – ohne Schmerzen, ohne Sensibilität. Das Team hat sich viel Zeit genommen und alles genau erklärt. Absolute Empfehlung!', name: 'Sabine' },
-  { text: 'Ich war vor meiner Hochzeit auf der Suche nach einem schonenden Bleaching und bin bei AVENTURIN genau richtig gelandet. Das Ergebnis war natürlich und strahlend zugleich.', name: 'Julia M.' },
-  { text: 'Sehr angenehme, entspannte Atmosphäre – man fühlt sich hier wirklich wohlbehandelt und nicht wie beim „normalen" Zahnarzt. Das Bleaching-Ergebnis hat alle meine Erwartungen übertroffen.', name: 'Thomas K.' },
-  { text: 'Endlich traue ich mich wieder, beim Lachen die Zähne zu zeigen. Die Beratung vorab war ehrlich und ohne Druck, das Ergebnis hält bis heute.', name: 'Christian D.' },
-  { text: 'Kompetent, einfühlsam und mit einem Auge fürs Detail – genau das richtige Team, wenn man Wert auf ein natürliches, gesundes Lächeln legt.', name: 'Marlene' },
-  { text: 'Ich hatte vorher Bedenken wegen empfindlicher Zähne, wurde aber bestens beraten und aufgeklärt. Keine Schmerzen, tolles Ergebnis nach nur wenigen Stunden.', name: 'Doris' },
-  { text: 'Sehr professionelle Beratung und ein Ergebnis, das man sofort sieht. Die Praxis selbst ist auch einfach schön – man fühlt sich hier nicht wie im Wartezimmer.', name: 'Margareta' },
-  { text: 'Habe mein Bleaching vor einem wichtigen Fototermin machen lassen – Ergebnis war natürlich, gleichmäßig und genau im richtigen Maß. Bin sehr glücklich damit!', name: 'Andreas R.' },
+  { text: 'Ich und meine Familie sind seit Jahren Patienten! Wir sind wirklich sehr zufrieden. Alle Ärzte/innen sind sehr, sehr einfühlsam. Sie nehmen einem die Angst vom Zahnarzt. Die Zahnarztpraxis kann ich nur wärmstens weiterempfehlen.', name: 'Brigitta Gögginger' },
+  { text: 'Sehr gute Zahnarztpraxis. Ambiente ist sehr gut und man fühlt sich dementsprechend sehr wohl. Kaum Wartezeiten – sehr freundliches Personal – moderne Geräte – sehr sauber. Es wird für einen Zeit genommen und auf die Bedürfnisse des Patienten eingegangen. Kann man mit gutem Gewissen weiterempfehlen.', name: 'Natalia Idziak' },
+  { text: 'Ausgezeichnete Praxis, kompetente Mitarbeiter und immer sehr freundlich! Technisch top ausgestattet, nie Wartezeiten! Kann man nur empfehlen, vor allem bei „Angst" vor dem Zahnarzt!', name: 'Andreas Honsak' },
+  { text: 'Die Zahnärztin und das Personal sind sehr freundlich und der Service ist hervorragend. Ich würde auch beim nächsten Mal gerne wieder hierher kommen.', name: 'Masa' },
 ]
 
 export default function HomePage() {
@@ -174,23 +170,10 @@ export default function HomePage() {
       <section id="standort" className="py-16 md:py-24 bg-white">
         <div className="section-width">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-stretch">
-            {/* Links: Google Maps */}
-            <div className="rounded-3xl overflow-hidden min-h-[320px] md:min-h-[420px] border border-gray-100 shadow-sm">
-              <iframe
-                title="Standort Zahnarztpraxis AVENTURIN am Graben, 1010 Wien"
-                src="https://www.google.com/maps?q=Graben+31,+1010+Wien,+Austria&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: '320px' }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-
-            {/* Rechts: Adresse & Text */}
+            {/* Links (Desktop): Adresse & Text */}
             <div className="flex flex-col justify-center">
               <span
-                className="inline-block text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider text-white w-fit"
+                className="inline-block text-xs font-bold px-4 py-1.5 mb-4 uppercase tracking-wider text-white w-fit"
                 style={{ backgroundColor: '#00B893' }}
               >
                 Zentral am Graben
@@ -206,7 +189,7 @@ export default function HomePage() {
 
               <div className="flex flex-col gap-4">
                 <div className="flex items-start gap-3">
-                  <span className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
+                  <span className="flex items-center justify-center w-9 h-9 flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
                     <MapPin size={16} style={{ color: '#00B893' }} />
                   </span>
                   <p className="text-gray-700 font-semibold pt-1.5">
@@ -214,7 +197,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
+                  <span className="flex items-center justify-center w-9 h-9 flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
                     <Phone size={16} style={{ color: '#00B893' }} />
                   </span>
                   <a href="tel:+4315330303" className="text-gray-700 font-semibold pt-1.5 hover:text-black transition-colors">
@@ -222,7 +205,7 @@ export default function HomePage() {
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
+                  <span className="flex items-center justify-center w-9 h-9 flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
                     <Mail size={16} style={{ color: '#00B893' }} />
                   </span>
                   <a href="mailto:hallo@aventurin.at" className="text-gray-700 font-semibold pt-1.5 hover:text-black transition-colors">
@@ -230,7 +213,7 @@ export default function HomePage() {
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
+                  <span className="flex items-center justify-center w-9 h-9 flex-shrink-0" style={{ backgroundColor: '#E3F7F2' }}>
                     <Clock size={16} style={{ color: '#00B893' }} />
                   </span>
                   <p className="text-gray-700 font-semibold pt-1.5">
@@ -239,14 +222,32 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <a
-                href="https://maps.app.goo.gl/Ki33txw9CkJBDJyK6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline mt-8 w-fit"
-              >
-                Route planen <ArrowRight size={16} />
-              </a>
+              <div className="flex flex-wrap gap-3 mt-8">
+                <button onClick={() => scrollToQuiz('Standort')} className="btn-primary w-fit">
+                  Jetzt Bleaching-Termin buchen <ArrowRight size={16} />
+                </button>
+                <a
+                  href="https://maps.app.goo.gl/Ki33txw9CkJBDJyK6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline w-fit"
+                >
+                  Route planen <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Rechts (Desktop): Google Maps */}
+            <div className="overflow-hidden min-h-[320px] md:min-h-[420px] border border-gray-100 shadow-sm">
+              <iframe
+                title="Standort Zahnarztpraxis AVENTURIN am Graben, 1010 Wien"
+                src="https://www.google.com/maps?q=Graben+31,+1010+Wien,+Austria&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '320px' }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>

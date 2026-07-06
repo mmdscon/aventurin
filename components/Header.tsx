@@ -62,7 +62,7 @@ export default function Header() {
           </nav>
           <button
             onClick={openMenu}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-xl hover:bg-gray-100 transition-colors"
+            className="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-100 transition-colors"
             aria-label="Menü öffnen"
           >
             <Menu size={22} color="#111" />
@@ -81,7 +81,7 @@ export default function Header() {
             <Image src="/logo-aventurin.webp" alt="Zahnarztpraxis AVENTURIN" width={280} height={114} className="h-12 w-auto" />
             <button
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center w-9 h-9 rounded-xl hover:bg-gray-100 transition-colors"
+              className="flex items-center justify-center w-9 h-9 hover:bg-gray-100 transition-colors"
             >
               <X size={20} color="#111" />
             </button>
@@ -91,7 +91,7 @@ export default function Header() {
               <button
                 key={id}
                 onClick={() => scrollTo(id, label)}
-                className="flex items-center gap-3 px-4 py-4 rounded-xl text-left text-gray-800 font-bold text-lg hover:bg-accent/10 transition-all group"
+                className="flex items-center gap-3 px-4 py-4 text-left text-gray-800 font-bold text-lg hover:bg-accent/10 transition-all group"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: '#00B893' }} />
                 {label}
