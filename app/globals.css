@@ -144,7 +144,7 @@ body {
 /* Sanfter, nach außen gerichteter Schatten oben & unten – lässt eine volle Sektion
    optisch aus dem Seitenfluss "herauskommen" */
 .section-pop-shadow {
-  box-shadow: 0 -12px 28px -8px rgba(0, 0, 0, 0.08), 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -20px 40px -10px rgba(0, 0, 0, 0.16), 0 20px 40px -10px rgba(0, 0, 0, 0.16);
   position: relative;
   z-index: 1;
 }

@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from 'react'
-import { ArrowRight, Star, MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { ArrowRight, Star, MapPin, Phone, Mail, Clock, Heart, Palette, ShieldCheck } from 'lucide-react'
 import Image from 'next/image'
 import Quiz from '@/components/Quiz'
 import { trackCtaClick, trackSectionView } from '@/lib/useAnalytics'
@@ -161,6 +161,63 @@ export default function HomePage() {
                   <p className="font-bold text-sm text-black">{r.name}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WARUM WIR ANDERS SIND ── */}
+      <section className="py-8 md:py-12">
+        <div className="section-width">
+          <div className="rounded-3xl overflow-hidden">
+            <div className="grid md:grid-cols-3">
+              {/* Bild */}
+              <div className="relative min-h-[220px] md:min-h-0">
+                <Image
+                  src="/images/warum-anders.webp"
+                  alt="Zufriedene Patientin der Zahnarztpraxis AVENTURIN"
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
+              {/* Text – hellgraue Card, dunkler Text */}
+              <div
+                className="md:col-span-2 p-8 md:p-12 flex flex-col justify-center"
+                style={{ backgroundColor: '#F3F4F6' }}
+              >
+                <h2 className="font-display text-3xl md:text-4xl font-semibold text-gray-900 mb-6 leading-tight">
+                  3 Gründe, warum wir bei Aventurin anders sind
+                </h2>
+                <div className="flex flex-col gap-4 mb-8">
+                  <div className="flex items-start gap-3">
+                    <span className="flex items-center justify-center w-9 h-9 flex-shrink-0 bg-white">
+                      <Heart size={16} style={{ color: '#00B893' }} />
+                    </span>
+                    <p className="text-gray-700 font-semibold pt-1.5">
+                      Ganzheitlich – wir behandeln nicht nur Zähne, sondern den ganzen Menschen.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="flex items-center justify-center w-9 h-9 flex-shrink-0 bg-white">
+                      <Palette size={16} style={{ color: '#00B893' }} />
+                    </span>
+                    <p className="text-gray-700 font-semibold pt-1.5">
+                      Kunst &amp; Atmosphäre – unsere Praxis ist bewusst kein steriles Wartezimmer.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="flex items-center justify-center w-9 h-9 flex-shrink-0 bg-white">
+                      <ShieldCheck size={16} style={{ color: '#00B893' }} />
+                    </span>
+                    <p className="text-gray-700 font-semibold pt-1.5">
+                      Schmerzfreiheit an erster Stelle – Angst vor dem Zahnarzt muss nicht sein.
+                    </p>
+                  </div>
+                </div>
+                <button onClick={() => scrollToQuiz('Warum anders')} className="btn-primary w-fit">
+                  Jetzt Bleaching-Termin buchen <ArrowRight size={18} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
