@@ -78,7 +78,7 @@ export default function HomePage() {
               className="underline decoration-2 underline-offset-4"
               style={{ textDecorationColor: '#00B893' }}
             >
-              In-Office Bleaching
+            Bleaching im 1. Bezirk.
             </span>
             .
           </p>
