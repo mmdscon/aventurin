@@ -1,9 +1,13 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { X } from 'lucide-react'
+import { useLocale } from '@/lib/i18n/useLocale'
+import { getDictionary } from '@/lib/i18n/dictionaries'
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
+  const locale = useLocale()
+  const t = getDictionary(locale).cookieBanner
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent')
@@ -42,23 +46,23 @@ export default function CookieBanner() {
           <span className="text-2xl">🍪</span>
         </div>
         <h3 className="text-lg font-extrabold text-gray-900 mb-2">
-          Cookie-Einstellungen
+          {t.heading}
         </h3>
         <p className="text-sm text-gray-600 leading-relaxed mb-6">
-          Wir verwenden Cookies und ähnliche Technologien, um Ihre Erfahrung zu verbessern und unsere Dienste zu optimieren. Dazu gehören auch Marketing-Cookies, die uns helfen, relevante Inhalte anzuzeigen.
+          {t.text}
         </p>
         <div className="flex gap-3 flex-col sm:flex-row">
           <button
             onClick={accept}
             className="btn-primary flex-1 justify-center"
           >
-            Alle akzeptieren
+            {t.acceptAll}
           </button>
           <button
             onClick={decline}
             className="btn-outline flex-1 justify-center"
           >
-            Nur notwendige
+            {t.onlyNecessary}
           </button>
         </div>
       </div>

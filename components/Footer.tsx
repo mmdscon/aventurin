@@ -1,7 +1,12 @@
 'use client'
 import Image from 'next/image'
+import { useLocale } from '@/lib/i18n/useLocale'
+import { getDictionary } from '@/lib/i18n/dictionaries'
 
 export default function Footer() {
+  const locale = useLocale()
+  const t = getDictionary(locale).footer
+
   const openCookieBanner = () => {
     window.dispatchEvent(new CustomEvent('open-cookie-banner'))
   }
@@ -18,14 +23,14 @@ export default function Footer() {
             <div className="flex flex-col items-start gap-3 min-w-0">
               <Image
                 src="/logo-aventurin.webp"
-                alt="Zahnarztpraxis AVENTURIN"
+                alt={t.logoAlt}
                 width={280}
                 height={114}
                 className="h-14 w-auto block"
                 style={{ maxWidth: '100%' }}
               />
               <p className="text-gray-500 text-sm leading-relaxed max-w-[280px]">
-                Ganzheitliche & ästhetische Zahnheilkunde am Graben, im Herzen der Wiener Innenstadt.
+                {t.tagline}
               </p>
             </div>
 
@@ -34,14 +39,14 @@ export default function Footer() {
 
               {/* Rechtliches */}
               <div className="flex flex-col gap-2 text-sm">
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Rechtliches</p>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{t.legalHeading}</p>
                 <a
                   href="https://www.aventurin.at/impressum/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-black transition-colors font-semibold"
                 >
-                  Impressum
+                  {t.imprint}
                 </a>
                 <a
                   href="https://www.aventurin.at/datenschutz/"
@@ -49,26 +54,28 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-black transition-colors font-semibold"
                 >
-                  Datenschutz
+                  {t.privacy}
                 </a>
                 <button
                   onClick={openCookieBanner}
                   className="text-gray-600 hover:text-black transition-colors text-left font-semibold"
                 >
-                  Cookie-Einstellungen
+                  {t.cookieSettings}
                 </button>
               </div>
 
               {/* Adresse */}
               <div className="flex flex-col gap-2 text-sm">
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Ordination</p>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{t.addressHeading}</p>
                 <p className="text-gray-600 font-semibold leading-relaxed">
-                  Zahnarztpraxis AVENTURIN<br />
-                  Graben 31/11<br />
-                  1010 Wien<br />
-                  Österreich
+                  {t.addressLines.map((line, i) => (
+                    <span key={line}>
+                      {line}
+                      {i < t.addressLines.length - 1 && <br />}
+                    </span>
+                  ))}
                 </p>
-                <p className="text-gray-500 text-xs mt-1">Mo–Fr, 10:00–18:00 Uhr</p>
+                <p className="text-gray-500 text-xs mt-1">{t.hours}</p>
               </div>
 
             </div>
@@ -80,10 +87,10 @@ export default function Footer() {
       <div style={{ backgroundColor: '#f8f8f8' }}>
         <div className="section-width py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-gray-400">
-            © {new Date().getFullYear()} Zahnarztpraxis AVENTURIN. Alle Rechte vorbehalten.
+            {t.copyright(new Date().getFullYear())}
           </p>
           <p className="text-xs text-gray-400">
-            Marketing von{' '}
+            {t.marketingBy}{' '}
             <a
               href="https://digitalisierungshilfe.at"
               target="_blank"

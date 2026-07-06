@@ -10,18 +10,8 @@ import {
   trackQuizFormView,
   trackQuizSubmit,
 } from '@/lib/useAnalytics'
-
-const q1Options = [
-  { label: 'Ja',       sub: 'ich bin bereit',            value: 'ja' },
-  { label: 'Unsicher', sub: 'ich informiere mich erstmal', value: 'unsicher' },
-]
-
-const q2Options = [
-  { label: 'So schnell wie möglich', value: 'sofort' },
-  { label: 'In den nächsten 4 Wochen', value: '4-wochen' },
-  { label: 'In den nächsten 1 bis 3 Monaten', value: '1-3-monate' },
-  { label: 'Ich weiß es noch nicht', value: 'weiss-nicht' },
-]
+import { useLocale } from '@/lib/i18n/useLocale'
+import { getDictionary } from '@/lib/i18n/dictionaries'
 
 type Step = 'q1' | 'q2' | 'loading' | 'form'
 
@@ -31,6 +21,8 @@ interface QuizProps {
 
 export default function Quiz({ variant = 'light' }: QuizProps) {
   const router = useRouter()
+  const locale = useLocale()
+  const t = getDictionary(locale).quiz
   const [step, setStep] = useState<Step>('q1')
   const [q1, setQ1] = useState('')
   const [q2, setQ2] = useState('')
@@ -73,9 +65,9 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
       await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ q1, q2, name, phone, email }),
+        body: JSON.stringify({ q1, q2, name, phone, email, locale }),
       })
-      router.push('/danke')
+      router.push(`/${locale}/danke`)
     } catch {
       setSubmitting(false)
     }
@@ -120,11 +112,11 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
       {step === 'q1' && (
         <div className="text-center">
           <h3 className={`font-display text-2xl md:text-3xl font-semibold mb-2 ${textClass}`}>
-            Bereit für strahlende Zähne ohne Schmerzen und Nebenwirkungen?
+            {t.q1.heading}
           </h3>
-          <p className={`mb-8 ${subTextClass}`}>Wählen Sie eine Antwort.</p>
+          <p className={`mb-8 ${subTextClass}`}>{t.q1.hint}</p>
           <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
-            {q1Options.map(({ label, sub, value }) => (
+            {t.q1.options.map(({ label, sub, value }) => (
               <GradientCard key={value} label={label} sub={sub} onClick={() => selectQ1(value)} />
             ))}
           </div>
@@ -135,11 +127,11 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
       {step === 'q2' && (
         <div className="text-center">
           <h3 className={`font-display text-2xl md:text-3xl font-semibold mb-2 ${textClass}`}>
-            Wann möchten Sie einen Termin vereinbaren?
+            {t.q2.heading}
           </h3>
-          <p className={`mb-8 ${subTextClass}`}>Wählen Sie die zutreffendste Option.</p>
+          <p className={`mb-8 ${subTextClass}`}>{t.q2.hint}</p>
           <div className="flex flex-col gap-3 max-w-md mx-auto">
-            {q2Options.map(({ label, value }) => (
+            {t.q2.options.map(({ label, value }) => (
               <ListOption key={value} label={label} onClick={() => selectQ2(value)} />
             ))}
           </div>
@@ -161,9 +153,9 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
               <CheckCircle size={28} style={{ color: accentColor }} />
             </div>
           </div>
-          <p className={`text-xl font-bold mb-2 ${textClass}`}>Ihre Angaben werden ausgewertet</p>
+          <p className={`text-xl font-bold mb-2 ${textClass}`}>{t.loading.title}</p>
           <p className={`text-sm ${subTextClass}`}>
-            Wir bereiten Ihre persönliche Beratung vor{'·'.repeat(loadingDots + 1)}
+            {t.loading.subtitle}{'·'.repeat(loadingDots + 1)}
           </p>
           <div className="mt-6 flex gap-2 justify-center">
             {[0, 1, 2, 3].map((i) => (
@@ -184,25 +176,23 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
       {step === 'form' && (
         <div className="text-center max-w-md mx-auto">
           <h3 className={`font-display text-2xl md:text-3xl font-semibold mb-2 ${textClass}`}>
-            Fast geschafft!
+            {t.form.heading}
           </h3>
           <p className={`mb-8 ${subTextClass}`}>
-            Sie sind einen Schritt von Ihrem persönlichen Beratungsgespräch entfernt.
+            {t.form.subtitle}
           </p>
 
           {/* Trust-Block mit Portrait */}
           <div className="flex flex-col items-center gap-3 mb-8 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
             <div className="relative w-24 h-24 flex-shrink-0">
-              <Image src="/images/ingrid-nemeth.webp" alt="Ingrid Németh – Psychologin & Life Coach bei AVENTURIN" fill className="object-contain" />
+              <Image src="/images/ingrid-nemeth.webp" alt={t.form.trustImageAlt} fill className="object-contain" />
             </div>
             <div className="text-center">
-              <p className="font-bold text-sm text-gray-900">Ingrid Németh</p>
-              <p className="text-xs text-gray-500">Psychologin &amp; Life Coach</p>
+              <p className="font-bold text-sm text-gray-900">{t.form.trustName}</p>
+              <p className="text-xs text-gray-500">{t.form.trustRole}</p>
             </div>
             <p className="text-sm text-gray-600 font-semibold leading-relaxed text-center">
-              Nach Ihrer Anfrage melden wir uns innerhalb von 24 Stunden persönlich bei Ihnen.
-              Im Erstgespräch besprechen wir Ihre Wünsche, klären den Ablauf des Bleachings
-              und erstellen gemeinsam einen individuellen Plan – ganz ohne Druck.
+              {t.form.trustText}
             </p>
             <div className="flex flex-wrap gap-2 justify-center mt-1">
               <span
@@ -210,11 +200,11 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
                 style={{ backgroundColor: 'rgba(188,145,89,0.15)', color: '#8a6a3f' }}
               >
                 <Gift size={13} />
-                Kostenlose Ersteinschätzung
+                {t.form.badgeFree}
               </span>
               <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-bold px-4 py-2 rounded-full">
                 <MapPin size={13} />
-                Am Graben, 1010 Wien
+                {t.form.badgeLocation}
               </span>
             </div>
           </div>
@@ -224,7 +214,7 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
               <User size={16} className={`absolute left-3 top-1/2 -translate-y-1/2 ${isDark ? 'text-white/50' : 'text-gray-400'}`} />
               <input
                 type="text"
-                placeholder="Vor- und Nachname *"
+                placeholder={t.form.namePlaceholder}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
@@ -239,7 +229,7 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
               <Phone size={16} className={`absolute left-3 top-1/2 -translate-y-1/2 ${isDark ? 'text-white/50' : 'text-gray-400'}`} />
               <input
                 type="tel"
-                placeholder="Telefonnummer *"
+                placeholder={t.form.phonePlaceholder}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
@@ -254,7 +244,7 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
               <Mail size={16} className={`absolute left-3 top-1/2 -translate-y-1/2 ${isDark ? 'text-white/50' : 'text-gray-400'}`} />
               <input
                 type="email"
-                placeholder="E-Mail-Adresse *"
+                placeholder={t.form.emailPlaceholder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -271,11 +261,11 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
               className="mt-2 flex items-center justify-center gap-2 py-4 font-extrabold text-base transition-all hover:scale-[1.02] disabled:opacity-60"
               style={{ backgroundColor: '#00B893', color: '#fff' }}
             >
-              {submitting ? 'Wird gesendet…' : 'Bleaching-Termin kostenlos anfragen'}
+              {submitting ? t.form.submitting : t.form.submit}
               {!submitting && <ArrowRight size={18} />}
             </button>
             <p className={`text-xs text-center ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
-              Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.
+              {t.form.privacyNote}
             </p>
           </form>
         </div>

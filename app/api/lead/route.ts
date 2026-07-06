@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { q1, q2, name, phone, email } = body
+    const { q1, q2, name, phone, email, locale } = body
 
     if (!name || !phone || !email) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -16,7 +16,8 @@ export async function POST(request: NextRequest) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           timestamp: new Date().toISOString(),
-          source: 'Orthopaeden Graz Landing Page',
+          source: 'Zahnarztpraxis AVENTURIN Landing Page',
+          language: locale || 'de',
           beschwerde_bereich: q1,
           anliegen_art: q2,
           name,
