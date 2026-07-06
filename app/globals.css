@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #00B893;        /* Türkis-Grün – Primärfarbe */
+  --accent-dark: #049174;   /* dunkleres Türkis */
+  --accent-light: #E3F7F2;  /* heller Türkis-Tint */
+  --gold: #BC9159;          /* Gold/Bronze – Sekundärakzent */
+  --gold-light: #F0D093;    /* Champagner */
+  --foreground: #2B2C2D;
+  --background: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,184,147,0.5); }
+  50% { box-shadow: 0 0 0 14px rgba(0,184,147,0); }
+}
+
+/* Headline-Font – Pendant zu Aventurins "vanbo" */
+.font-display {
+  font-family: var(--font-fraunces), serif;
+}
+
+/* Handschrift-Akzent – Pendant zu Aventurins "Despeinada" */
+.font-script {
+  font-family: var(--font-caveat), cursive;
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-cta-pulse {
+  animation: ctaPulse 2.2s ease-in-out infinite;
+}
+
+/* Buttons — fully rounded */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--accent);
+  color: #ffffff;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.25s ease;
+  cursor: pointer;
+  border: none;
+}
+
+/* Gold-Gradient-Hover — Signature-Interaktion aus der Aventurin Brand Identity */
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: #2B2C2D;
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(188, 145, 89, 0.35);
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  color: #111111;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-white:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #2B2C2D;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  border: 2px solid #2B2C2D;
+}
+
+.btn-outline:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  transform: scale(1.03);
+}
+
+/* Layout */
+.section-width {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Fade mask for marquee */
+.fade-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
