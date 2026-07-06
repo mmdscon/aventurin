@@ -29,12 +29,6 @@ export default function DankePage() {
         <p className="text-gray-500 mb-10 leading-relaxed">
           Unser Team meldet sich in Kürze persönlich bei Ihnen. Wir freuen uns darauf, Sie auf Ihrem Weg zu einem strahlenden Lächeln zu begleiten.
         </p>
-        <div
-          className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 text-3xl border-4"
-          style={{ borderColor: '#00B893' }}
-        >
-          😁
-        </div>
         <p className="font-bold mb-8 text-black">
           Das Team der Zahnarztpraxis AVENTURIN
         </p>

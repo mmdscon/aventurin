@@ -94,8 +94,8 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
       className="aspect-square flex flex-col items-center justify-center gap-1 cursor-pointer transition-all hover:scale-105 hover:shadow-lg"
       style={{ background: 'linear-gradient(135deg, #049174 0%, #00B893 100%)' }}
     >
-      <span className="text-3xl md:text-4xl font-extrabold text-white leading-none">{label}</span>
-      <span className="text-sm font-semibold text-white/80">{sub}</span>
+      <span className="text-xl md:text-2xl font-extrabold text-white leading-tight text-center px-2">{label}</span>
+      <span className="text-xs font-semibold text-white/80 text-center px-2">{sub}</span>
     </button>
   )
 

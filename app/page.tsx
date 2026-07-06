@@ -226,14 +226,6 @@ export default function HomePage() {
                 <button onClick={() => scrollToQuiz('Standort')} className="btn-primary w-fit">
                   Jetzt Bleaching-Termin buchen <ArrowRight size={16} />
                 </button>
-                <a
-                  href="https://maps.app.goo.gl/Ki33txw9CkJBDJyK6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline w-fit"
-                >
-                  Route planen <ArrowRight size={16} />
-                </a>
               </div>
             </div>
 
@@ -278,7 +270,11 @@ export default function HomePage() {
                 <p className="text-white/85 mb-8 font-semibold leading-relaxed max-w-lg">
                   Unser Team begleitet Sie ganzheitlich und einfühlsam – von der Erstberatung bis zum sichtbaren Ergebnis, ganz ohne Druck.
                 </p>
-                <button onClick={() => scrollToQuiz('Final CTA')} className="btn-white self-start">
+                <button
+                  onClick={() => scrollToQuiz('Final CTA')}
+                  className="self-start inline-flex items-center gap-2 px-8 py-3.5 font-bold text-base transition-all hover:scale-[1.03]"
+                  style={{ background: 'linear-gradient(135deg, #BC9159 0%, #F0D093 100%)', color: '#2B2C2D' }}
+                >
                   Jetzt Bleaching-Termin buchen <ArrowRight size={18} />
                 </button>
               </div>
