@@ -45,6 +45,7 @@ export default function HomePage() {
           <div className="relative w-full rounded-3xl overflow-hidden aspect-square md:aspect-[21/9]">
             <video
               src="/videos/hero-loop.mp4"
+              poster="/images/hero-poster.webp"
               autoPlay
               loop
               muted
@@ -173,6 +174,7 @@ export default function HomePage() {
               <div className="relative aspect-[4/5] md:aspect-[4/5] md:min-h-0">
                 <SectionVideo
                   src="/videos/warum-anders.mp4"
+                  poster="/images/warum-anders-poster.webp"
                   ariaLabel={t.home.whyDifferent.imageAlt}
                   className="w-full h-full"
                 />
@@ -308,9 +310,10 @@ export default function HomePage() {
               {/* Bild */}
               <div className="relative min-h-[220px] md:min-h-0">
                 <Image
-                  src="/images/bild2av.png"
+                  src="/images/bild2av.webp"
                   alt={t.home.finalCta.imageAlt}
                   fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover object-center"
                 />
               </div>

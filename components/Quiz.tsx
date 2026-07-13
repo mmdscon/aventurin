@@ -185,7 +185,7 @@ export default function Quiz({ variant = 'light' }: QuizProps) {
           {/* Trust-Block mit Portrait */}
           <div className="flex flex-col items-center gap-3 mb-8 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
             <div className="relative w-24 h-24 flex-shrink-0">
-              <Image src="/images/ingrid-nemeth.webp" alt={t.form.trustImageAlt} fill className="object-contain" />
+              <Image src="/images/ingrid-nemeth.webp" alt={t.form.trustImageAlt} fill sizes="96px" className="object-contain" />
             </div>
             <div className="text-center">
               <p className="font-bold text-sm text-gray-900">{t.form.trustName}</p>

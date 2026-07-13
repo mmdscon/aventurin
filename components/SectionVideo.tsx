@@ -4,11 +4,12 @@ import { Play } from 'lucide-react'
 
 interface SectionVideoProps {
   src: string
+  poster?: string
   className?: string
   ariaLabel?: string
 }
 
-export default function SectionVideo({ src, className = '', ariaLabel = 'Video' }: SectionVideoProps) {
+export default function SectionVideo({ src, poster, className = '', ariaLabel = 'Video' }: SectionVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
@@ -28,7 +29,7 @@ export default function SectionVideo({ src, className = '', ariaLabel = 'Video' 
           video.pause()
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.4, rootMargin: '150px 0px' }
     )
     observer.observe(container)
     return () => observer.disconnect()
@@ -78,9 +79,10 @@ export default function SectionVideo({ src, className = '', ariaLabel = 'Video' 
       <video
         ref={videoRef}
         src={src}
+        poster={poster}
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
