@@ -59,9 +59,9 @@ const de = {
       imageAlt: 'Zufriedene Patientin der Zahnarztpraxis AVENTURIN',
       heading: '3 Gründe, warum wir bei Aventurin anders sind',
       points: [
-        'Ganzheitlich – wir behandeln nicht nur Zähne, sondern den ganzen Menschen.',
-        'Kunst &amp; Atmosphäre – unsere Praxis ist bewusst kein steriles Wartezimmer.',
-        'Schmerzfreiheit an erster Stelle – Angst vor dem Zahnarzt muss nicht sein.',
+        'Fachordination für zahnschonendes Mundhygiene &amp; Bleaching – nach dem letzten wissenschaftlichen Stand.',
+        'Ihr Lächeln ist einzigartig – Ihre Mundhygiene &amp; Zahnaufhellung sollte es auch sein. Besonders schonend umgesetzt.',
+        'Maximale Ergebnisse in minimaler Zeit ohne Empfindlichkeiten. Schnelle Terminvergabe &amp; Online-Buchung.',
       ],
       cta: 'Jetzt Bleaching-Termin buchen',
     },

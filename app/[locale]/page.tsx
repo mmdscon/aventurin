@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { ArrowRight, Star, MapPin, Phone, Mail, Clock, Heart, Palette, ShieldCheck } from 'lucide-react'
 import Image from 'next/image'
 import Quiz from '@/components/Quiz'
+import SectionVideo from '@/components/SectionVideo'
 import { trackCtaClick, trackSectionView } from '@/lib/useAnalytics'
 import { useLocale } from '@/lib/i18n/useLocale'
 import { getDictionary } from '@/lib/i18n/dictionaries'
@@ -42,12 +43,15 @@ export default function HomePage() {
       <section className="py-8 md:py-12">
         <div className="section-width">
           <div className="relative w-full rounded-3xl overflow-hidden aspect-square md:aspect-[21/9]">
-            <Image
-              src="/images/herobanneraventurin.png"
-              alt={t.home.hero.alt}
-              fill
-              className="object-cover object-center"
-              priority
+            <video
+              src="/videos/hero-loop.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              aria-label={t.home.hero.alt}
             />
             <div
               className="absolute inset-0"
@@ -165,13 +169,12 @@ export default function HomePage() {
         <div className="section-width">
           <div className="rounded-3xl overflow-hidden">
             <div className="grid md:grid-cols-3">
-              {/* Bild */}
-              <div className="relative min-h-[220px] md:min-h-0">
-                <Image
-                  src="/images/warum-anders.webp"
-                  alt={t.home.whyDifferent.imageAlt}
-                  fill
-                  className="object-cover object-center"
+              {/* Video */}
+              <div className="relative aspect-[4/5] md:aspect-[4/5] md:min-h-0">
+                <SectionVideo
+                  src="/videos/warum-anders.mp4"
+                  ariaLabel={t.home.whyDifferent.imageAlt}
+                  className="w-full h-full"
                 />
               </div>
               {/* Text – hellgraue Card, dunkler Text */}
@@ -305,7 +308,7 @@ export default function HomePage() {
               {/* Bild */}
               <div className="relative min-h-[220px] md:min-h-0">
                 <Image
-                  src="/images/ctabild.jpg"
+                  src="/images/bild2av.png"
                   alt={t.home.finalCta.imageAlt}
                   fill
                   className="object-cover object-center"

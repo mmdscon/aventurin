@@ -61,9 +61,9 @@ const en: Dictionary = {
       imageAlt: 'Satisfied patient of Zahnarztpraxis AVENTURIN',
       heading: '3 reasons why Aventurin is different',
       points: [
-        'Holistic – we treat the whole person, not just teeth.',
-        "Art &amp; atmosphere – our practice is deliberately not a sterile waiting room.",
-        "Pain-free comes first – you don't have to be afraid of the dentist.",
+        'Specialist care for gentle oral hygiene &amp; whitening – based on the latest scientific standards.',
+        'Your smile is unique – so should your oral hygiene &amp; teeth whitening be. Especially gentle in practice.',
+        'Maximum results in minimal time, without sensitivity. Fast appointments &amp; online booking.',
       ],
       cta: 'Book your whitening appointment now',
     },
