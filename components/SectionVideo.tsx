@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { Play } from 'lucide-react'
+import { Play, Volume2, VolumeX } from 'lucide-react'
 
 interface SectionVideoProps {
   src: string
@@ -14,6 +14,7 @@ export default function SectionVideo({ src, poster, className = '', ariaLabel = 
   const containerRef = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [muted, setMuted] = useState(true)
 
   // Play automatically once the section scrolls into view (and pause when it leaves)
   useEffect(() => {
@@ -74,6 +75,14 @@ export default function SectionVideo({ src, poster, className = '', ariaLabel = 
     video.currentTime = ratio * video.duration
   }
 
+  const handleMuteToggle = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    const video = videoRef.current
+    if (!video) return
+    video.muted = !video.muted
+    setMuted(video.muted)
+  }
+
   return (
     <div ref={containerRef} className={`relative overflow-hidden group ${className}`}>
       <video
@@ -99,6 +108,19 @@ export default function SectionVideo({ src, poster, className = '', ariaLabel = 
         >
           <Play size={26} fill="#00B893" color="#00B893" className="ml-1" />
         </span>
+      </button>
+
+      {/* Sound on/off control */}
+      <button
+        onClick={handleMuteToggle}
+        aria-label={muted ? 'Ton einschalten' : 'Ton ausschalten'}
+        className="absolute top-3 right-3 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white/90 shadow-lg transition-transform duration-200 hover:scale-105"
+      >
+        {muted ? (
+          <VolumeX size={18} color="#00B893" />
+        ) : (
+          <Volume2 size={18} color="#00B893" />
+        )}
       </button>
 
       {/* Timeline / progress bar */}
